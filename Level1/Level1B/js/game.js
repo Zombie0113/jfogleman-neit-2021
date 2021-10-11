@@ -6,7 +6,7 @@ var interval = 1000/60;
 var ball = new Ball(); 
 var randomNum;
 const randomColors = new Array("#a20000", "#a15203", "#a1a101", "#ff0000", "#336601", "#088446", "#008282", "#004183", "#0121cc", "#450a80", "#6a016a", "#99014e");
-const nameColors = new Array("Dark Red", "Umber Brown", "Mustard Yellow", "Bright Red", "Olive Green", "Green", "Teal", "Navy Blue", "Blue", "Purple", "Violet", "Fuschia");
+const nameColors = new Array("Dark Red", "Umber Brown", "Mustard Yellow", "Bright Red", "Olive Green", "Green", "Teal", "Navy Blue", "Blue", "Purple", "Violet", "Fuchsia");
 
 //Set the ball's velocity
 ball.vx = 1;
