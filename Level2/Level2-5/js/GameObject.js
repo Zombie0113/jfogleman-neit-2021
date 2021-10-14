@@ -1,15 +1,40 @@
-function GameObject()
+function GameObject(x,y,w,h,color)
 {
     //Set the object's position
-    this.x = canvas.width/2;
-	this.y = canvas.height/2;
+    if (x == undefined)
+    {
+        this.x = canvas.width/2;
+    } else {
+        this.x = x;
+    }
+    if (y == undefined)
+    {
+	    this.y = canvas.height/2;
+    } else {
+        this.y = y;
+    }
 
     //Set the object's dimensions
-    this.width = 100;
-	this.height = 100;
+    if (w == undefined)
+    {
+        this.width = 100;
+    } else {
+        this.width = w;
+    }
+    if (h == undefined)
+    {
+        this.height = 100;
+    } else {
+        this.height = h;
+    }
 
     //Set the object's color
-    this.color = "#222222";
+    if (color == undefined)
+    {
+        this.color = "#222222";
+    } else {
+        this.color = color;
+    }
 
     //Set the object's inital force
     this.force = 0;
@@ -53,14 +78,14 @@ function GameObject()
     {
         context.save();
 			context.fillStyle = this.color;
-			context.translate(this.x/8, this.y);
-			context.fillRect((-this.width/2), (-this.height/2), this.width/4, this.height);
+			context.translate(this.x, this.y);
+			context.fillRect((-this.width/2), (-this.height/2), this.width, this.height);
 		context.restore();
     }
 
     //Draw the ball
     this.drawCircle = function()
-    {
+    {  
         context.save();
             context.fillStyle = this.color;
             context.translate(this.x, this.y);
