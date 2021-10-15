@@ -54,6 +54,12 @@ function animate()
 
 	ball.move();
 
+    //Check if the ball passes the paddle
+    if (ball.x < 0 + ball.width/2)
+    {
+        ball.x = canvas.width/2;
+        ball.y = canvas.height/2;
+    }
 	//Check for the boundaries of x and reverse the velocity
     if (ball.x > canvas.width - ball.width/2 || ball.x < 0 + ball.width/2)
     {
@@ -70,14 +76,14 @@ function animate()
         ball.color = randomColors[randomNum];
         document.getElementById("color").innerHTML = "Current Color: " + nameColors[randomNum];
     }
-
+    //Check for the bounding box for the paddle and reverse the velocity
     if(ball.hitTestObject(player1))
-        {
-            ball.vx = -ball.vx;
-            randomNum = Math.floor(Math.random() * 12);
-            ball.color = randomColors[randomNum];
-            document.getElementById("color").innerHTML = "Current Color: " + nameColors[randomNum];
-        }
+    {
+        ball.vx = -ball.vx;
+        randomNum = Math.floor(Math.random() * 12);
+        ball.color = randomColors[randomNum];
+        document.getElementById("color").innerHTML = "Current Color: " + nameColors[randomNum];
+    }
 
     //Draw the paddle
     player1.drawRect();
