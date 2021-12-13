@@ -1,8 +1,8 @@
 //Set variables
 var canvas = document.getElementById("canvas");
 var context = canvas.getContext("2d");
-var timer = setInterval(animate, interval);
 var interval = 1000/60;
+var timer = setInterval(animate, interval);
 
 //Set score variables
 var score = 0;
@@ -36,8 +36,8 @@ ball.vx = 0;
 ball.vy = 0;
 
 //Set the player's acceleration
-var ax = 0.1;
-var force = 0.1;
+var ax = 0.5;
+var force = 0.5;
 var vx = 0;
 
 function resetBall() 
