@@ -102,12 +102,7 @@ function GameObject(x,y,w,h,color)
 
     this.move = function()
 	{
-        this.gravitySpeed += this.gravity;
 		this.x += this.vx;
-        if (this.gravitySpeed >= 9.8)
-        {
-            this.gravitySpeed = 9.8;
-        }
-		this.y += this.vy + this.gravitySpeed;
+		this.y += this.vy;
 	}
 }

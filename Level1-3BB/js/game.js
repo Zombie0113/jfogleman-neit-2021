@@ -29,7 +29,7 @@ ball.y = canvas.height/2;
 ball.width = 80;
 ball.height = 80;
 ball.color = "#ff00ff";
-ball.force = 1;
+ball.force = 5;
 
 //Set the ball's velocity
 ball.vx = 0;
@@ -82,6 +82,9 @@ function animate()
         player1.x = 0 + player1.width/2;
     }
 
+    ball.vy += 1;
+    ball.vx *= 0.98;
+    ball.vx *= 0.98;
 
 	ball.move();
 
@@ -89,22 +92,20 @@ function animate()
     if (ball.x > canvas.width - ball.width/2)
     {
         ball.x = canvas.width - ball.width/2;
-        ball.vx = ball.force;
-        ball.vx = -ball.vy * 0.67;
+        ball.vx = -ball.vx;
     }
     //Check for left boundary
     else if (ball.x < 0 + ball.width/2)
     {
         ball.x = 0 + ball.width/2;
-        ball.vx = -2;
-        ball.vy = -ball.vy * 0.67;
+        ball.vx = -ball.vx;
     }
 	//Check for bottom boundary
     if (ball.y > canvas.height - ball.height/2)
     {
         score = 0;
         ball.y = canvas.height - ball.height/2;
-        ball.vy = -ball.vy * 0.67;
+        ball.vy = -ball.vy;
     }
     //Check for top boundary
     if (ball.y < 0 + ball.height/2)
@@ -117,39 +118,29 @@ function animate()
     //Check for the bounding box for player1 and reverse the velocity
     if(ball.hitTestObject(player1))
     {
+        ball.vy = -35;
+        ball.y = player1.y - player1.height/2 - ball.height/2;
+        score++;
+        //000000
         //Check for far left section
-        if (ball.x < player1.x - player1.width/6)
+        if (ball.x < player1.x - player1.width/6 && ball.x > player1.x - player1.width/3)
         {
-            ball.vy = -35;
-            ball.vx = -ball.force * 5;
-            score++;
+            ball.vx = -ball.force;
         }
         //Check for middle left section
-        else if (ball.x < player1.x - player1.width/4)
+        else if (ball.x < player1.x - player1.width/3)
         {
-            ball.vy = -35;
-            ball.vx = -ball.force;
-            score++;
+            ball.vx = -ball.force * 5;
         }
         //Check for middle right section
-        else if(ball.x > player1.x + player1.width/4)
+        else if(ball.x > player1.x + player1.width/6 && ball.x < player1.x + player1.width/3)
         {
-            ball.vy = -35;
             ball.vx = ball.force;
-            score++;
         }
         //Check for far right section
         else if(ball.x > player1.x + player1.width/6)
         {
-            ball.vy = -35;
             ball.vx = ball.force * 5;
-            score++;
-        }
-        //Check for middle section
-        else
-        {
-            ball.vy = -35;
-            score++;
         }
     }
 
